@@ -11,7 +11,7 @@ toolbox = base.Toolbox()
 # binary attribute (0, 1)
 toolbox.register("attr_bool", random.randint, 0, 1)
 
-# an individual is a lsit of 20 bits
+# an individual is a list of 20 bits
 toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, 20)
 
 # a population is a list of individuals
