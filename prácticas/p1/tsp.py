@@ -42,7 +42,12 @@ def create_individual():
 # saco la ciudad de inicio, luego ahgo todas las permutaciones y le vuelvo a
 # concatenar al principio y al final la ciudad de inicio
 def create_population():
-    cities = [0, 1, 2, 3]
+    #cities = [0, 1, 2, 3]
+    #  creo la lista de ciudades
+    cities = []
+    for i in range(CANT_CITIES):
+        cities.append(i)
+
     cities.remove(START_CITY)
     permutaciones = list(itertools.permutations(cities))
     permutaciones = [list(p) for p in permutaciones]
