@@ -40,16 +40,16 @@ creator.create("Individual", list, fitness=creator.FitnessMin)
 toolbox = base.Toolbox()
 
 def create_population():
-    #cities = [0, 1, 2, 3]
-    #  creo la lista de ciudades
-    cities = []
-    for i in range(CANT_CITIES):
-        cities.append(i)
-
+    cities = list(range(CANT_CITIES))
     cities.remove(START_CITY)
     permutaciones = list(itertools.permutations(cities))
     permutaciones = [list(p) for p in permutaciones]
-    return [[START_CITY] + permutaciones[i] + [START_CITY] for i in range(POPULATION_SIZE)]
+
+    poblacion = []
+    for i in range(POPULATION_SIZE):
+        ruta = [START_CITY] + permutaciones[i] + [START_CITY]
+        poblacion.append(creator.Individual(ruta))
+    return poblacion
 
 # a population is a list of individuals
 toolbox.register("population", create_population)
@@ -82,43 +82,38 @@ def eval(individual):
 toolbox.register("evaluate", eval)
 
 def crossover(p1, p2):
-    # combination of one point
     if random.random() < CROSOVER_PROB:
-        # excluyo la ciudad de inicio (y de fin)
         p1_inner = p1[1:-1]
         p2_inner = p2[1:-1]
         point = random.randint(1, len(p1_inner) - 1)
         offspring1 = [START_CITY] + p1_inner[:point]
         offspring2 = [START_CITY] + p2_inner[:point]
 
-        # ahora relleno el resto con el otro padre
         for city in p2_inner:
-            if not (city in offspring1):
+            if city not in offspring1:
                 offspring1.append(city)
-
         for city in p1_inner:
-            if not (city in offspring2):
+            if city not in offspring2:
                 offspring2.append(city)
 
         offspring1.append(START_CITY)
         offspring2.append(START_CITY)
-        return offspring1, offspring2
-    return p1[:], p2[:]
+
+        return creator.Individual(offspring1), creator.Individual(offspring2)
+    return creator.Individual(p1[:]), creator.Individual(p2[:])
+
 
 # 4 genetic operators
 toolbox.register("mate", crossover)                   # 2 point crosover
 
 def mutate(individual):
     if random.random() < MUTATION_PROB:
-            index1 = random.randint(1, len(individual)-2)
-            index2 = random.randint(1, len(individual)-2)
-            elem1 = individual[index1]
-            elem2 = individual[index2]
-            individual[index1] = elem2
-            individual[index2] = elem1
-    return individual
+        index1 = random.randint(1, len(individual)-2)
+        index2 = random.randint(1, len(individual)-2)
+        individual[index1], individual[index2] = individual[index2], individual[index1]
+    return individual,
 
-toolbox.register("mutate", mutate, indpb = 0.05)   # mutation bit flip
+toolbox.register("mutate", mutate)   # mutation bit flip
 
 toolbox.register("select", tools.selNSGA2)
 
@@ -130,7 +125,7 @@ def main():
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", lambda fits: tuple(sum(f)/len(f) for f in zip(*fits)))
     stats.register("min", lambda fits: tuple(min(f) for f in zip(*fits)))
-    stats.register("min", lambda fits: tuple(max(f) for f in zip(*fits)))
+    stats.register("max", lambda fits: tuple(max(f) for f in zip(*fits)))
 
     # evol con NSGA-II
     algorithms.eaMuPlusLambda(pop, toolbox, mu=50, lambda_=100, cxpb=0.7, mutpb=0.3, ngen=40, stats=stats, halloffame=hof, verbose=True)
