@@ -40,18 +40,3 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.title("Ajuste por mínimos cuadrados (ecuación normal)")
 plt.show()
-
-# Añadir un outlier para ver el efecto
-x2 = np.append(x, 10.0)
-y2 = np.append(y, 30.0)   # outlier extremo
-X2 = np.column_stack((np.ones_like(x2), x2))
-theta2 = np.linalg.inv(X2.T.dot(X2)).dot(X2.T.dot(y2))
-b2, w2 = theta2[0], theta2[1]
-print("Con outlier -> theta:", theta2)
-plt.figure()
-plt.scatter(x2, y2, label="Datos + outlier")
-plt.plot(xs, w*xs + b, label="Recta original", linestyle='--')
-plt.plot(xs, w2*xs + b2, label=f"Recta con outlier: y={w2:.2f}x+{b2:.2f}")
-plt.legend()
-plt.title("Efecto de outlier en mínimos cuadrados")
-plt.show()
