@@ -20,7 +20,7 @@ print("MSE de la regresión lineal:", mse_lin)
 
 # b) regresión polinomial
 poly = PolynomialFeatures(degree=2)
-X_poly = poly.fit_transform(X)  # columnas: [1, X, X^2]
+X_poly = poly.fit_transform(X)  # columnas: [1, X, X^2] (agrega las nevas caract)
 print("\nDataset transformado (grado 2):")
 print(X_poly)
 

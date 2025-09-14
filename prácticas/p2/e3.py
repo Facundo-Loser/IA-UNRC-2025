@@ -12,11 +12,11 @@ y = X**2 + np.random.normal(0, 2, size=X.shape)  # y = x^2 + ruido
 
 # ajustar regresión lineal
 lin_reg = LinearRegression()
-lin_reg.fit(X, y) # fit calcula los coeficientes de la recta
-y_pred_lin = lin_reg.predict(X)
+lin_reg.fit(X, y)               # fit calcula los coeficientes de la recta (esto entrena el modelo de regresión lineal)
+y_pred_lin = lin_reg.predict(X) # predict para estima los valores de salida y dados los mismos X
 
 # calcular MSE
-mse_lin = mean_squared_error(y, y_pred_lin)
+mse_lin = mean_squared_error(y, y_pred_lin) # calcula el MSE (distancia entre los puntos reales y los de la func hipotesis)
 print("MSE de la regresión lineal:", mse_lin)
 
 # 4. Graficar

@@ -1,5 +1,9 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
 
 np.random.seed(0)
 
@@ -7,13 +11,8 @@ np.random.seed(0)
 X = np.linspace(-5, 5, 100).reshape(-1, 1)
 y = X**2 + np.random.normal(0, 4, size=X.shape)  # más ruido para simular datos reales
 
-# Separar en entrenamiento y validación (80% / 20%)
+# Separar en entrenamiento y validación (80% - 20%)
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=0)
-
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-import matplotlib.pyplot as plt
 
 grados = [1, 2, 5, 10]  # distintos grados a probar
 mse_train = []
