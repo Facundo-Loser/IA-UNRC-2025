@@ -20,18 +20,18 @@ print("Coeficientes (Ecuación normal):", theta_normal.ravel()) # ravel aplana l
 # inicializamos en cero (bias y pendiente) 2 filas y 1 columna
 # [theta0]
 # [theta1]
-theta_gd = np.zeros((2, 1))
-alpha = 0.01                 # tasa de aprendizaje
-iterations = 500
+# (b) gradiente descendente
+
+theta_gd = np.zeros((2, 1))   # θ0 y θ1 inicializados en 0
+eta = 0.01                    # tasa de aprendizaje
+n_iter = 1000
+m = len(y)                    # cantidad de muestras
 mse_history = []
 
-for i in range(iterations):
-    y_pred = X @ theta_gd
-    error = y_pred - y
-    grad = (2/n) * (X.T @ error)         # gradiente de MSE
-    theta_gd = theta_gd - alpha * grad   # actualización
-    mse = np.mean(error**2)
-    mse_history.append(mse)
+for iteration in range(n_iter):
+    gradients = (1/m) * X.T @ (X @ theta_gd - y)
+    theta_gd = theta_gd - eta * gradients
+    mse_history.append(np.mean((X @ theta_gd - y) ** 2))
 
 print("Coeficientes (Gradiente Descendente):", theta_gd.ravel())
 
@@ -52,7 +52,7 @@ plt.title("Ajuste lineal: comparación de métodos")
 plt.show()
 
 # gráfico de convergencia del error
-plt.plot(range(iterations), mse_history, color="purple")
+plt.plot(range(n_iter), mse_history, color="purple")
 plt.xlabel("Iteración")
 plt.ylabel("MSE")
 plt.title("Convergencia del error (Gradiente descendente)")
