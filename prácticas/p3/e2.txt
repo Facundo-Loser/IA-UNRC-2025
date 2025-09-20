@@ -1,0 +1,49 @@
+2) OR
+
+Característica  Clase
+x1 x2           y
+0  0            o
+0  1            x
+1  0            x
+1  1            x
+
+learning rate = 1.0
+
+h(x) = w0 + w1*x + w2*x
+
+func predicción:
+y = | 1 si h(x) >= 0 (clase x)
+    | 0 si h(x) < 0  (clase o)
+
+inicialmente: w0 = 0, w1 = 0, w2 = 0
+
+> epoca 1
+caso  valor_h(x) clase_predicha error w0 w1 w2
+[0,0] 0          x              -1    -1 0  0
+[0,1] -1         o               1     0 0  1
+[1,0] 0          x               0     0 0  1
+[1,1] 1          x               0     0 0  1
+
+> epoca 2
+caso valor_h(x) clase_predicha error w0 w1 w2
+[0,0] 0         x              1     -1 0  1
+[0,1] 0         x              0     -1 0  1
+[1,0] -1        o              1      0 1  1
+[1,1] 2         x              0      0 1  1
+
+> epoca 3
+caso valor_h(x) clase_predicha error w0 w1 w2
+[0,0] 0         x              -1    -1 1  1
+[0,1] 0         x               0    -1 1  1
+[1,0] 0         x               0    -1 1  1
+[1,1] 1         x               0    -1 1  1
+
+> epoca 4
+caso valor_h(x) clase_predicha error w0 w1 w2
+[0,0] -1        o              0     -1 1  1
+[0,1] 0         x              0     -1 1  1
+[1,0] 0         x              0     -1 1  1
+[1,1] 1         x              0     -1 1  1
+
+
+fueron necesarias 4 etapas

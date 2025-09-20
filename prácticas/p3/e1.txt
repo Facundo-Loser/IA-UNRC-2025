@@ -1,0 +1,18 @@
+1) a)
+TP: 30
+FP: 20
+TN: 140
+FN: 10
+
+b)
+Accuracy: 0.85 -> 85% (cuantos clasifica correctamente)
+Precision: 0.6 -> 60% (de todos los positivos que predijo, cuantos lo era realmente)
+Recall: 0.75 -> 75%   (de todos los que realmente era positivos, cuantos detecto el modelo)
+
+c) Cuadro comparativo:
+
+TP FP TN  FN   Accuracy Precision Recall
+30 20 140 10   0.85     0.6       0.75      (actual)
+20 5  155 20   0.875    0.8       0.5       (detecta menos enfermos)
+38 60 100 2    0.69     0.38      0.95      (detecta casi todos los enfermos)
+40 0  160 0    1.0      1.0       1.0
