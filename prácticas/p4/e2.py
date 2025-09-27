@@ -53,3 +53,10 @@ plot_decision_boundary(knn1, X_train_scaled, y_train, "k=1")
 knn15 = KNeighborsClassifier(n_neighbors=15)
 knn15.fit(X_train_scaled, y_train)
 plot_decision_boundary(knn15, X_train_scaled, y_train, "k=15")
+
+
+"""
+Conclusiones:
+con k=1 es muy preciso pero no se ajusta tan bien a nuevos datos (overfitting)
+con k=15,30 tiene un recall de 1.0 osea que baja la precision (underfitting)
+"""
