@@ -1,0 +1,107 @@
+01 - Algoritmos Genéticos
+- Que son los AG?
+- Cuando se usan los AG?
+- Explicar cada etapa/estructura de un AG.
+- Diferencias entre un algoritmo de busqueda tradicional y AG.
+- Ventajas de AG.
+- Limitaciones de AG.
+- Como se evitan los máximos locales?
+- Como afecta una prob baja/alta de mutación y crossover?
+- Que es MOGA?.
+- Que es el frente de Pareto?
+- Explicar NSGA-2.
+
+02 - ML Supervisado Regresión
+- Que es regresión lineal?
+- Explicar  Overfitting y Underfitting.
+- Como se mide la calidad de un modelo en ML?
+- Explicar como se hace la partición de los datos para entrenar y validar un modelo?
+- Explicar el MSE.
+- Que es el bias? para que sirve?
+- De dónde sale la ecuación Normal?
+- Cual es el costo computacional de usar la ecuación Normal?
+- Que es el cómputo con gradientes?
+- Que ocurre si el learning rate toma valores muy pequeños o muy grandes?
+- Ventaja y desventaja de aprendizaje por gradientes.
+- Que es el aprendizaje estocástico por gradientes?
+- Que es gradiente estocástico mini-batch?
+- Que es la regresión polinomial?
+- Que sucede en regresión polinomial si agregamos deamsiadas características? (osea un graod alto)
+- Para que sirven las curvas de aprendizaje?
+- Caules son los 3 tipos de errores que sumados forman el error de generalización?
+- Explicar sesgo(bias),varianza y error irreducible.
+- Que es la regularización y para que sirve?
+- Explicar Ridge Regression, Lasso Regression y Elastic Net Regression.
+- Que es early stopping?
+
+03 - ML caso estudio regresión lineal
+- Describir el proceso de modelado y utilización de un modelo ML.
+- Que es regresión univariante y multivariante?
+- Que es RMSE y MAE?
+- Que es One-Hot Encoding y Ordinal Encoding?
+- Que es la normalización o escalado de características?
+
+04 - ML Supervisado Clasificación
+- Que es clasificación?
+- Que tipos de clasificación existen?
+- Como se mide la calidad de un modelo en clasificación?
+- Explicar clasificación lineal?
+- Como se encuentra un clasificador lineal?
+- Que es un perceptron?
+- Que ocurre si mis datos no son linealmente separables?
+- Que es logistic regresión?
+- Que es la función de sigmoide?
+- Explicar la función de costo Log Loss.
+- Explicar clasificación multi-clase.
+- Que es regresión Softmax o multinomial?
+- Explicar la función de costo de entropía cruzada.
+
+05 - ML Supervisado Clasificación no Parametrizada
+- Que es unmodelo no parametrico?
+- Explicar k-Nearest Neighbors.
+- Como se mide la distancia en k-Nearest Neighbors?
+- Para que se normalizan los datos en k-Nearest Neighbors?
+- Explicar k-d trees para k-Nearest Neighbors.
+- Ventajas y Desventajas de K-Nearest Neighbors.
+- Que son las Máquinas de Sopore Vectorial (SVM)?
+- Que es el kernel trick?
+- Que es soft margin?
+- Ventajas y desventajas de SVM.
+- Que son los Árboles de desición (DT)?
+- Ventajas de usar DT.
+- Que es el índice Gini?
+- Explicar Prunning en DT.
+
+06 - Ensemble
+-
+
+** - General:
+- Que son los hiperparámetros y porque se les llama así?
+- Que es 'entrenar un modelo'?
+- Que es aprendizaje supervisado?
+- Que es aprendizaje no supervisado?
+- Que es aprendizaje por refuerzo?
+- Que es aprendizaje evolutivo?
+- Cuando utilizar ML?
+- Explicar problemas y desventajas de ML.
+- En que se diferencian regresión lineal y clasificación?
+- Cuando un problema de clasificación se transformaria en uno de regresión?
+
+** - Preguntas que dijo el profe
+- Que es 'aprender'?
+- Como se si mi modelo esta bien o mal?
+- Que ocurre en clasificacion con k Nearest Neighbors cuando todos los vecinos tienen una clase distinta?
+
+** - Random (No son preguntas)
+- siempre lo que busco son parametros de una función.
+- practicar ejercicios básicos que se pueden hacer a mano?
+- 'En muchos problemas de IA, tener más y mejores datos es más importante que usar modelos más complejos'.
+- El entrenamiento del modelo es un proceso iterativo en el que el algoritmo ajusta sus parámetros para minimizar errores y mejorar la precisión predictiva.
+- tener preprado un pseudocódigo para el entrenamiento de cada modelo????
+- Al separa datos para entrenamiento y evaluación usar mesutreo aleatorio para evitar sesgo.
+- Se puede usar el coeficiente de correlación de Pearson’s para analizar los datos.
+- Conocer el pipeline de Scikit-Learn para regresión lineal??
+
+** - Links videos:
+- SVM: https://www.youtube.com/watch?v=_YPScrckx28&t=1s
+- SVM P1: https://www.youtube.com/watch?v=efR1C6CvhmE
