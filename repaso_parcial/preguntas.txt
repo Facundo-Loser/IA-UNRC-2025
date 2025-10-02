@@ -72,8 +72,12 @@
 - Que es el índice Gini?
 - Explicar Prunning en DT.
 
-06 - Ensemble
--
+06 - Aprendizaje Supervisado Ensembles
+- Que es un ensemble?
+- Explicar Bagging, Boosting y Stacking.
+- Que voting?
+- Que es Random Forest?
+- Comparar Bagging, Bosting y Stacking.
 
 ** - General:
 - Que son los hiperparámetros y porque se les llama así?
@@ -86,6 +90,7 @@
 - Explicar problemas y desventajas de ML.
 - En que se diferencian regresión lineal y clasificación?
 - Cuando un problema de clasificación se transformaria en uno de regresión?
+- Que es una matriz de confusión? como se interpreta?
 
 ** - Preguntas que dijo el profe
 - Que es 'aprender'?
