@@ -79,6 +79,12 @@
 - Que es Random Forest?
 - Comparar Bagging, Bosting y Stacking.
 
+07 - Redes Neuronales
+- Que es una red neuronal?
+- Que es un perceptron?
+- Que es una sigmoid neuron?
+-
+
 ** - General:
 - Que son los hiperparámetros y porque se les llama así?
 - Que es 'entrenar un modelo'?
@@ -91,6 +97,7 @@
 - En que se diferencian regresión lineal y clasificación?
 - Cuando un problema de clasificación se transformaria en uno de regresión?
 - Que es una matriz de confusión? como se interpreta?
+- Hacer ejercicios del tutorial de Redes Neuronales.
 
 ** - Preguntas que dijo el profe
 - Que es 'aprender'?
@@ -106,6 +113,12 @@
 - Al separa datos para entrenamiento y evaluación usar mesutreo aleatorio para evitar sesgo.
 - Se puede usar el coeficiente de correlación de Pearson’s para analizar los datos.
 - Conocer el pipeline de Scikit-Learn para regresión lineal??
+- Suppose we take all the weights and biases in a network of perceptrons, and multiply them by a positive constant, c>0.Show that the behaviour of the network doesn't change.
+- MLP usa sigmoid neuron, no perceptron
+- What we'd like is an algorithm which lets us find weights and biases so that the output from the network approximates y(x) for all training inputs x.
+- in other words, we want to find a set of weights and biases which make the cost as small as possible. We'll do that using an algorithm known as gradient descent.
+
+
 
 ** - Links videos:
 - SVM: https://www.youtube.com/watch?v=_YPScrckx28&t=1s
