@@ -83,7 +83,9 @@
 - Que es una red neuronal?
 - Que es un perceptron?
 - Que es una sigmoid neuron?
--
+- Explicar la estructura de una red neuronal.
+- Explicar como es el proceso de entrenamiento de una red neuronal.
+- Como funciona Back-propagation?
 
 ** - General:
 - Que son los hiperparámetros y porque se les llama así?
@@ -103,6 +105,9 @@
 - Que es 'aprender'?
 - Como se si mi modelo esta bien o mal?
 - Que ocurre en clasificacion con k Nearest Neighbors cuando todos los vecinos tienen una clase distinta?
+- Relacionar overfitting con alguna técnica con algun parámetro.
+- Que pasa si modifico esto.
+- Saber porque usamos la derivada.
 
 ** - Random (No son preguntas)
 - siempre lo que busco son parametros de una función.
