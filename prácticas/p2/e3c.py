@@ -14,7 +14,7 @@ y = X**2 + np.random.normal(0, 4, size=X.shape)  # más ruido para simular datos
 # Separar en entrenamiento y validación (80% - 20%)
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=0)
 
-grados = [1, 2, 5, 10]  # distintos grados a probar
+grados = [1, 2, 6, 10, 80]  # distintos grados a probar
 mse_train = []
 mse_val = []
 

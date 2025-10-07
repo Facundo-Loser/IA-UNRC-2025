@@ -28,7 +28,7 @@
 - Que es la regresión polinomial?
 - Que sucede en regresión polinomial si agregamos deamsiadas características? (osea un graod alto)
 - Para que sirven las curvas de aprendizaje?
-- Caules son los 3 tipos de errores que sumados forman el error de generalización?
+- Cuales son los 3 tipos de errores que sumados forman el error de generalización?
 - Explicar sesgo(bias),varianza y error irreducible.
 - Que es la regularización y para que sirve?
 - Explicar Ridge Regression, Lasso Regression y Elastic Net Regression.
@@ -45,7 +45,7 @@
 - Que es clasificación?
 - Que tipos de clasificación existen?
 - Como se mide la calidad de un modelo en clasificación?
-- Explicar clasificación lineal?
+- Explicar clasificación lineal.
 - Como se encuentra un clasificador lineal?
 - Que es un perceptron?
 - Que ocurre si mis datos no son linealmente separables?
@@ -100,6 +100,8 @@
 - Cuando un problema de clasificación se transformaria en uno de regresión?
 - Que es una matriz de confusión? como se interpreta?
 - Hacer ejercicios del tutorial de Redes Neuronales.
+- Diferencia entre Programa convecional, AG y ML.
+- Como se evalua la calidad de un modelo?
 
 ** - Preguntas que dijo el profe
 - Que es 'aprender'?
@@ -126,5 +128,14 @@
 
 
 ** - Links videos:
-- SVM: https://www.youtube.com/watch?v=_YPScrckx28&t=1s
-- SVM P1: https://www.youtube.com/watch?v=efR1C6CvhmE
+
+- K-D trees: https://www.youtube.com/watch?v=Glp7THUpGow
+- K-D trees: https://www.youtube.com/watch?v=gs9E7E0qOIc
+
+- SVM: https://www.youtube.com/watch?v=ny1iZ5A8ilA
+- SVM: https://www.youtube.com/watch?v=Y6RRHw9uN9o
+-> SVM will optimize the weights in such a way that only the support vectors determine the weights and the desicion boundary.
+
+- SVM P1: https://www.youtube.com/watch?v=efR1C6CvhmE&t=609s
+
+- DT: https://www.youtube.com/watch?v=-W0DnxQK1Eo

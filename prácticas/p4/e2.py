@@ -45,7 +45,7 @@ def plot_decision_boundary(clf, X, y, title):
     plt.title(title)
     plt.show()
 
-# Visualizamos para k=1 y k=15 como ejemplo
+# gráficos con para k=1, k=15 y k=30 como ejemplo
 knn1 = KNeighborsClassifier(n_neighbors=1)
 knn1.fit(X_train_scaled, y_train)
 plot_decision_boundary(knn1, X_train_scaled, y_train, "k=1")
@@ -54,9 +54,123 @@ knn15 = KNeighborsClassifier(n_neighbors=15)
 knn15.fit(X_train_scaled, y_train)
 plot_decision_boundary(knn15, X_train_scaled, y_train, "k=15")
 
+knn15 = KNeighborsClassifier(n_neighbors=30)
+knn15.fit(X_train_scaled, y_train)
+plot_decision_boundary(knn15, X_train_scaled, y_train, "k=30")
+
 
 """
 Conclusiones:
+
+*noise=0.35*
 con k=1 es muy preciso pero no se ajusta tan bien a nuevos datos (overfitting)
 con k=15,30 tiene un recall de 1.0 osea que baja la precision (underfitting)
+
+
+Resultados para k=1:
+Accuracy: 0.7
+Precision: 0.53
+Recall: 0.9
+F1 Score: 0.67
+------------------------------
+Resultados para k=3:
+Accuracy: 0.83
+Precision: 0.69
+Recall: 0.9
+F1 Score: 0.78
+------------------------------
+Resultados para k=5:
+Accuracy: 0.8
+Precision: 0.62
+Recall: 1.0
+F1 Score: 0.77
+------------------------------
+Resultados para k=15:
+Accuracy: 0.8
+Precision: 0.62
+Recall: 1.0
+F1 Score: 0.77
+------------------------------
+Resultados para k=30:
+Accuracy: 0.83
+Precision: 0.67
+Recall: 1.0
+F1 Score: 0.8
+------------------------------
+
+
+
+*noise=0.60*
+con k=1 hay un claro overffiting
+con k=30 se dejan pasar muchos puntos (underfitting)
+
+Resultados para k=1:
+Accuracy: 0.7
+Precision: 0.53
+Recall: 0.9
+F1 Score: 0.67
+------------------------------
+Resultados para k=3:
+Accuracy: 0.7
+Precision: 0.53
+Recall: 0.8
+F1 Score: 0.64
+------------------------------
+Resultados para k=5:
+Accuracy: 0.77
+Precision: 0.62
+Recall: 0.8
+F1 Score: 0.7
+------------------------------
+Resultados para k=15:
+Accuracy: 0.73
+Precision: 0.56
+Recall: 0.9
+F1 Score: 0.69
+------------------------------
+Resultados para k=30:
+Accuracy: 0.73
+Precision: 0.56
+Recall: 1.0
+F1 Score: 0.71
+------------------------------
+
+
+
+*noise=0.10*
+para k=1 hay overffiting pero no es tan grave ya que no hay casi datos atipicos
+para k=15,30 hay algo de underfitting
+
+Resultados para k=1:
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+F1 Score: 1.0
+------------------------------
+Resultados para k=3:
+Accuracy: 1.0
+Precision: 1.0
+Recall: 1.0
+F1 Score: 1.0
+------------------------------
+Resultados para k=5:
+Accuracy: 0.97
+Precision: 0.91
+Recall: 1.0
+F1 Score: 0.95
+------------------------------
+Resultados para k=15:
+Accuracy: 0.87
+Precision: 0.71
+Recall: 1.0
+F1 Score: 0.83
+------------------------------
+Resultados para k=30:
+Accuracy: 0.8
+Precision: 0.62
+Recall: 1.0
+F1 Score: 0.77
+------------------------------
+
+
 """

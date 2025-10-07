@@ -5,6 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
 
 # Dataset sintético
 X, y = make_classification(
@@ -51,3 +52,5 @@ print(classification_report(y_test, y_pred_logreg))
 ConfusionMatrixDisplay(confusion_matrix(y_test, y_pred_logreg)).plot()
 plt.title("AdaBoost + LogisticRegression")
 plt.show()
+
+# *KNN no se puede usar ya que no se entrena ni se modifican pesos*

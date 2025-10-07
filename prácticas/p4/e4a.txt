@@ -1,0 +1,340 @@
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+2  Baja  Alta       No     Reprobado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+5  Media Baja       Si     Aprobado
+6  Alta  Alta       No     Aprobado
+7  Baja  Baja       Si     Reprobado
+8  Alta  Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+acalración: en values = [Reprobado, Aprobado, Promoción]
+
+*Nodo raíz*
+- gini    = 0.66
+- samples = 10
+- values  = [3,4,3]
+- class   = Aprobado
+
+
+
+
+
+-> probamos dividir por el atributo Horas (Horas_Baja<=0.5): (1)
+
+(ejemplos del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+5  Media Baja       Si     Aprobado
+6  Alta  Alta       No     Aprobado
+8  Alta  Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0.4897
+- samples = 7
+- values  = [0,4,3]
+- class   = Aprobado
+
+(ejemplos del nodo hijo derecho)
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+2  Baja  Alta       No     Reprobado
+7  Baja  Baja       Si     Reprobado
+
+*Nodo hijo derecho* (false)
+- gini    = 0
+- samples = 3
+- values  = [3,0,0]
+- class   = Reprobado
+
+Gini ponderado con (1): (7/10)*0.4897 + (3/10)*0 = 0.34279 -> reducción Gini: 0.66-0.34279 = 0.31721
+
+
+
+
+
+
+
+-> probamos dividir por el atributo Asistencia (Asistencia_Alta<=0.5): (2)
+
+(ejemplo del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+5  Media Baja       Si     Aprobado
+7  Baja  Baja       Si     Reprobado
+8  Alta  Baja       Si     Aprobado
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0.5
+- samples = 4
+- values  = [2,2,0]
+- class   = Reprobado-Aprobado (alguna de las 2)
+
+(ejemplos del nodo hijo derecho)
+ID Horas Asistencia Tareas Resultado
+2  Baja  Alta       No     Reprobado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+6  Alta  Alta       No     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.61111
+- samples = 6
+- values  = [1,2,3]
+- class   = Promoción
+
+Gini ponderado con (2): (4/10)*0.5 + (6/10)*0.6111 = 0.56666 -> reducción Gini: 0.66-0.56666 = 0.09334
+
+
+
+
+-> probamos dividir por el atributo Asistencia (Tareas_Si<=0.5): (3)
+
+(ejemplos del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+2  Baja  Alta       No     Reprobado
+3  Media Alta       No     Aprobado
+6  Alta  Alta       No     Aprobado
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0.5
+- samples = 4
+- values  = [2,2,0]
+- class   = Reprobado-Aprobado (cualquiera de las 2)
+
+(ejemplos del  nodo hijo derecho)
+ID Horas Asistencia Tareas Resultado
+4  Alta  Alta       Si     Promoción
+5  Media Baja       Si     Aprobado
+7  Baja  Baja       Si     Reprobado
+8  Alta  Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.61111
+- samples = 6
+- values  = [1,2,3]
+- class   = Promoción
+
+Gini ponderado con (3): (4/10)*0.5 + (6/10)*0.6111 = 0.56666 -> reducción Gini: 0.66-0.56666 = 0.09334
+
+
+
+*Resumen primer división*
+Atributo   Reducción_Gini
+Horas      0.31721
+Asistencia 0.09334
+Tareas     0.09334
+
+Conclusión hacemos la división de (1)
+
+Arbol queda hasta ahora:
+
+[Horas_Baja<=0.5]
+[gini=0.66      ]
+[samples=10     ]
+[values=[3,4,3] ]
+[class=Aprobado ]
+       |        \
+(true) |         \ (false)
+       |          \
+[gini=0.4897   ]  [gini=0         ]
+[samples=7     ]  [samples=3      ]
+[values=[0,4,3]]  [values=[3,0,0] ]
+[class=Aprobado]  [class=Reprobado]
+
+
+
+Ahora seguimos con el nodo del hijo izquierdo dividiendo:
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+5  Media Baja       Si     Aprobado
+6  Alta  Alta       No     Aprobado
+8  Alta  Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+
+-> probamos dividir por el atributo Asistencia (Asistencia_Alta<=0.5): (1)
+
+(ejemplos del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+5  Media Baja       Si     Aprobado
+8  Alta  Baja       Si     Aprobado
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0
+- samples = 2
+- values  = [0,2,0]
+- class   = Aprobado
+
+(ejemplos del nodo del hijo derecho)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+6  Alta  Alta       No     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.48
+- samples = 5
+- values  = [0,2,3]
+- class   = Promoción
+
+Gini ponderado con (1): (2/7)*0 + (5/7)*0.48 = 0.3428 -> reducción Gini: 0.4897 - 0.3428 = 0.1469
+
+
+
+
+-> probamos dividir por el atributo Tareas (Tareas_Si<=0.5): (2)
+
+(ejemplos del nodo del hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+6  Alta  Alta       No     Aprobado
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0
+- samples = 2
+- values  = [0,2,0]
+- class   = Aprobado
+
+(ejemplos del nodo del hijo derecho)
+ID Horas Asistencia Tareas Resultado
+4  Alta  Alta       Si     Promoción
+5  Media Baja       Si     Aprobado
+8  Alta  Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.48
+- samples = 5
+- values  = [0,2,3]
+- class   = Promoción
+
+Gini ponderado con (2): (2/7)*0 + (5/7)*0.48 = 0.3428 -> reducción Gini: 0.4897 - 0.3428 = 0.1469
+
+
+
+
+Como da los mismo, entonces elejimos la división con (1) y el árbol queda:
+
+[Horas_Baja<=0.5]
+[gini=0.66      ]
+[samples=10     ]
+[values=[3,4,3] ]
+[class=Aprobado ]
+       |        \
+(true) |         \ (false)
+       |          \
+[gini=0.4897   ]  [gini=0         ]  (cond hijo izquierdo: (Asistencia_Alta<=0.5))
+[samples=7     ]  [samples=3      ]
+[values=[0,4,3]]  [values=[3,0,0] ]
+[class=Aprobado]  [class=Reprobado]
+       |       \
+(true) |        \ (false)
+       |         \
+[gini=0        ]  [gini=0.48      ]
+[samples=2     ]  [samples=5      ]
+[values=[0,2,0]]  [values=[0,2,3] ]
+[class=Aprobado]  [class=Promoción]
+
+
+Ahora seguimos dividiendo con el nodo del hijo derecho (Solo queda dividir por atributo Tareas)
+(ejemplos del nodo del hijo derecho)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+4  Alta  Alta       Si     Promoción
+6  Alta  Alta       No     Aprobado
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+-> dividimos por el atributo Tareas (Tareas_Si<=0.5): (1)
+
+(ejemplos del hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+6  Alta  Alta       No     Aprobado
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0
+- samples = 2
+- values  = [0,2,0]
+- class   = Aprobado
+
+(ejemplos del hijo derecho)
+ID Horas Asistencia Tareas Resultado
+4  Alta  Alta       Si     Promoción
+9  Media Alta       Si     Promoción
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0
+- samples = 3
+- values  = [0,0,3]
+- class   = Promoción
+
+Entonces finalmente el árbol queda:
+
+[Horas_Baja<=0.5]
+[gini=0.66      ]
+[samples=10     ]
+[values=[3,4,3] ]
+[class=Aprobado ]
+       |        \
+(true) |         \ (false)
+       |          \
+[gini=0.4897   ]  [gini=0         ]   (cond hijo izquierdo: (Asistencia_Alta<=0.5))
+[samples=7     ]  [samples=3      ]
+[values=[0,4,3]]  [values=[3,0,0] ]
+[class=Aprobado]  [class=Reprobado]
+       |       \
+(true) |        \ (false)
+       |         \
+[gini=0        ]  [gini=0.48      ]  (cond hijo derecho: (Tareas_Si<=0.5))
+[samples=2     ]  [samples=5      ]
+[values=[0,2,0]]  [values=[0,2,3] ]
+[class=Aprobado]  [class=Promoción]
+                  |                \
+           (true) |                 \ (true)
+                  |                  \
+                  [gini=0        ]    [gini=0         ]
+                  [samples=2     ]    [samples=3      ]
+                  [values=[0,2,0]]    [values=[0,0,3] ]
+                  [class=Aprobado]    [class=Promoción]
+
+
+
+
+
+
+*Mi función de importacia:* usa el 'Gini Impurity Criterion'.
+
+primero:
+Si IMPORTANCE(a) es grande, significa que dividir por a redujo mucho la impureza, o seaque separó bien las clases.
+Si IMPORTANCE(a) es chica, significa que el split no ayudó mucho a ordenar las clases.
+
+1. calcular el gini del nodo padre
+2. para cada atributo a, partir los ejemplos segun cada valor v de a.
+3. calcular el gini de cada hijo
+4. obtener el gini ponderado de los hijos: sumatoria i=1 hasta n (gini_del i-esimo hijo/gini del padre)
+5. calcular la reducción del gini: gini_padre(a) - gini_split(a).
+6. elejir el atributo que mas reducción produzca.
+
+
+- we calculate the gini index for each possible split.
+- este ejercicio era simple porque cada atributo se podia partir en 2 nada mas, pero si tenemos
+atributos numericos que peuden tomar un rango, se puede calcular todas las posibles formas de partir por cada atributo y a sucedevez se calcula dentro de cada atributo todas
+las posibles formas de partir de acuerdo al valor de los datos. (se hace bastante largo)

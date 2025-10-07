@@ -12,11 +12,16 @@ import seaborn as sns
 np.random.seed(42)
 
 # Parámetros: media y desviación estándar de IBU y RMS para cada estilo
+# "ibu": (media, desviación estándar)
+# "rms": (media, desviación estándar)
+# "n": cantidad de muestras de ese estilo
+# IBU (International Bitterness Units)  mide cuán amarga es una cerveza
+# SRM (Standard Reference Method) mide el color/oscura de la cerveza
 parametros = {
-    "Lager":     {"ibu": (15, 5), "rms": (20, 5), "n": 50},
-    "Stout":     {"ibu": (45, 5), "rms": (60, 10), "n": 50},
-    "IPA":       {"ibu": (35, 5), "rms": (50, 5), "n": 50},
-    "Scottish":  {"ibu": (20, 5), "rms": (30, 5), "n": 50}
+    "Lager":     {"ibu": (15, 5), "rms": (20, 5), "n": 100},
+    "Stout":     {"ibu": (45, 5), "rms": (60, 10), "n": 100},
+    "IPA":       {"ibu": (35, 5), "rms": (50, 5), "n": 100},
+    "Scottish":  {"ibu": (20, 5), "rms": (30, 5), "n": 100}
 }
 
 X_list = []
@@ -24,6 +29,7 @@ y_list = []
 clases = {"Lager":0, "Stout":1, "IPA":2, "Scottish":3}
 
 for estilo, param in parametros.items():
+    # esto genera datos aleatorios (dist normal) centrados en esas medias
     ibu = np.random.normal(param["ibu"][0], param["ibu"][1], param["n"])
     rms = np.random.normal(param["rms"][0], param["rms"][1], param["n"])
     X_list.append(np.column_stack((ibu, rms)))
@@ -32,7 +38,7 @@ for estilo, param in parametros.items():
 X = np.vstack(X_list)
 y = np.hstack(y_list)
 
-# Separar entrenamiento y validación
+# Separar entrenamiento y validación (30% validacion = 120 datos con n=100 cada clase)
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
 
 # ------------------------

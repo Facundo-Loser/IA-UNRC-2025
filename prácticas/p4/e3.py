@@ -55,7 +55,42 @@ def plot_decision_boundary(model, X, y, title):
     plt.title(title)
     plt.show()
 
-# Ejemplo de visualización con RBF y C=1
-svm_rbf = SVC(kernel="rbf", C=1, gamma="scale")
-svm_rbf.fit(X_train_scaled, y_train)
-plot_decision_boundary(svm_rbf, X_train_scaled, y_train, "SVM con kernel RBF, C=1")
+# Graficar todas las combinaciones de kernel y C
+for kernel in kernels:
+    for C in C_values:
+        svm = SVC(kernel=kernel, C=C, gamma="scale")
+        svm.fit(X_train_scaled, y_train)
+        title = f"SVM kernel={kernel}, C={C}"
+        plot_decision_boundary(svm, X_train_scaled, y_train, title)
+
+
+"""
+*noise=0.35*
+Kernel=linear, C=0.1 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=linear, C=1 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=linear, C=10 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=poly, C=0.1 -> {'Accuracy': 0.63, 'Precision': 0.48, 'Recall': 1.0, 'F1': 0.65}
+Kernel=poly, C=1 -> {'Accuracy': 0.7, 'Precision': 0.53, 'Recall': 1.0, 'F1': 0.69}
+Kernel=poly, C=10 -> {'Accuracy': 0.7, 'Precision': 0.53, 'Recall': 1.0, 'F1': 0.69}
+Kernel=rbf, C=0.1 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=rbf, C=1 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=rbf, C=10 -> {'Accuracy': 0.8, 'Precision': 0.64, 'Recall': 0.9, 'F1': 0.75}
+Kernel=sigmoid, C=0.1 -> {'Accuracy': 0.83, 'Precision': 0.67, 'Recall': 1.0, 'F1': 0.8}
+Kernel=sigmoid, C=1 -> {'Accuracy': 0.77, 'Precision': 0.6, 'Recall': 0.9, 'F1': 0.72}
+Kernel=sigmoid, C=10 -> {'Accuracy': 0.67, 'Precision': 0.5, 'Recall': 0.9, 'F1': 0.64}
+
+
+*si incrementamos el ruido: noise=0.60* (parece costarle mas separar bien)
+Kernel=linear, C=0.1 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 1.0, 'F1': 0.71}
+Kernel=linear, C=1 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 1.0, 'F1': 0.71}
+Kernel=linear, C=10 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 1.0, 'F1': 0.71}
+Kernel=poly, C=0.1 -> {'Accuracy': 0.47, 'Precision': 0.38, 'Recall': 1.0, 'F1': 0.56}
+Kernel=poly, C=1 -> {'Accuracy': 0.53, 'Precision': 0.42, 'Recall': 1.0, 'F1': 0.59}
+Kernel=poly, C=10 -> {'Accuracy': 0.57, 'Precision': 0.43, 'Recall': 1.0, 'F1': 0.61}
+Kernel=rbf, C=0.1 -> {'Accuracy': 0.57, 'Precision': 0.43, 'Recall': 1.0, 'F1': 0.61}
+Kernel=rbf, C=1 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 1.0, 'F1': 0.71}
+Kernel=rbf, C=10 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 0.9, 'F1': 0.69}
+Kernel=sigmoid, C=0.1 -> {'Accuracy': 0.73, 'Precision': 0.56, 'Recall': 1.0, 'F1': 0.71}
+Kernel=sigmoid, C=1 -> {'Accuracy': 0.87, 'Precision': 0.75, 'Recall': 0.9, 'F1': 0.82}
+Kernel=sigmoid, C=10 -> {'Accuracy': 0.57, 'Precision': 0.42, 'Recall': 0.8, 'F1': 0.55}
+"""

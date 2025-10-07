@@ -10,8 +10,7 @@ data = {
     "Horas": ["Baja", "Baja", "Media", "Alta", "Media", "Alta", "Baja", "Alta", "Media", "Alta"],
     "Asistencia": ["Baja", "Alta", "Alta", "Alta", "Baja", "Alta", "Baja", "Baja", "Alta", "Alta"],
     "Tareas": ["No", "No", "No", "Si", "Si", "No", "Si", "Si", "Si", "Si"],
-    "Resultado": ["Reprobado", "Reprobado", "Aprobado", "Promoción",
-                  "Aprobado", "Aprobado", "Reprobado", "Aprobado", "Promoción", "Promoción"]
+    "Resultado": ["Reprobado", "Reprobado", "Aprobado", "Promoción","Aprobado", "Aprobado", "Reprobado", "Aprobado", "Promoción", "Promoción"]
 }
 
 df = pd.DataFrame(data)
