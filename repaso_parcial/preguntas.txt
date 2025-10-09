@@ -89,6 +89,17 @@
 - Que función de costo se utiliza?
 - Que optimizadores se pueden usar en ANN?
 
+08 - Redes neuronales convolucionales
+- Que es una red neuronales convolucional? en que se diferencia de las clásicas ANN?
+- Como se resaltan los patrones?
+- Que es un kernel?
+- Explicar stride, padding.
+- Que sucede caunto tenemos varios canales? (ej imagen rgb -> 3 canales)
+- Que filtros de kernel existen?
+- Que es pooling?
+- Explicar Data aumentation.
+- Ventajas de CNN.
+
 ** - General:
 - Que son los hiperparámetros y porque se les llama así?
 - Que es 'entrenar un modelo'?
