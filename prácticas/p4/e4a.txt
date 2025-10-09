@@ -58,6 +58,75 @@ Gini ponderado con (1): (7/10)*0.4897 + (3/10)*0 = 0.34279 -> reducción Gini: 0
 
 
 
+-> probamos dividir por el atributo Horas (Horas_Media<=0.5): (1)*
+
+(ejemplos del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+2  Baja  Alta       No     Reprobado
+4  Alta  Alta       Si     Promoción
+6  Alta  Alta       No     Aprobado
+7  Baja  Baja       Si     Reprobado
+8  Alta  Baja       Si     Aprobado
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0.6530
+- samples = 7
+- values  = [3,2,2]
+- class   = Reprobado
+
+(ejemplos nodo hijo derecho)
+ID Horas Asistencia Tareas Resultado
+3  Media Alta       No     Aprobado
+5  Media Baja       Si     Aprobado
+9  Media Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.444444
+- samples = 3
+- values  = [0,2,1]
+- class   = Aprobado
+
+Gini ponderado con (1)*: (7/10)*0.6530 + (3/10)*0.444444 = 0.5904332 -> reducción Gini: 0.66-0.5904332 = 0.0695668
+
+
+
+
+-> probamos dividir por el atributo Horas (Horas_Alta<=0.5): (1)**
+
+(ejemplos del nodo hijo izquierdo)
+ID Horas Asistencia Tareas Resultado
+1  Baja  Baja       No     Reprobado
+2  Baja  Alta       No     Reprobado
+3  Media Alta       No     Aprobado
+5  Media Baja       Si     Aprobado
+7  Baja  Baja       Si     Reprobado
+9  Media Alta       Si     Promoción
+
+*Nodo hijo izquierdo* (true)
+- gini    = 0.6111111
+- samples = 6
+- values  = [3,2,1]
+- class   = Reprobado
+
+(ejemplos del nodo hijo derecho)
+ID Horas Asistencia Tareas Resultado
+4  Alta  Alta       Si     Promoción
+6  Alta  Alta       No     Aprobado
+8  Alta  Baja       Si     Aprobado
+10 Alta  Alta       Si     Promoción
+
+*Nodo hijo derecho* (false)
+- gini    = 0.5
+- samples = 4
+- values  = [0,2,2]
+- class   = Aprobado ó Promoción
+
+Gini ponderado con (1)**: (6/10)*0.6111111 + (4/10)*0.5 = 0.56666 -> reducción Gini: 0.66-0.0.56666 = 0.09334
+
+
+
 
 
 -> probamos dividir por el atributo Asistencia (Asistencia_Alta<=0.5): (2)
@@ -131,7 +200,9 @@ Gini ponderado con (3): (4/10)*0.5 + (6/10)*0.6111 = 0.56666 -> reducción Gini:
 
 *Resumen primer división*
 Atributo   Reducción_Gini
-Horas      0.31721
+Horas      0.31721   (1)    horas baja
+Horas      0.0695668 (1)*   horas media
+Horas      0.09334   (1)**  horas alta
 Asistencia 0.09334
 Tareas     0.09334
 
