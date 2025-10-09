@@ -84,8 +84,10 @@
 - Que es un perceptron?
 - Que es una sigmoid neuron?
 - Explicar la estructura de una red neuronal.
-- Explicar como es el proceso de entrenamiento de una red neuronal.
+- Explicar como es el proceso de entrenamiento/aprendizaje de una red neuronal.
 - Como funciona Back-propagation?
+- Que función de costo se utiliza?
+- Que optimizadores se pueden usar en ANN?
 
 ** - General:
 - Que son los hiperparámetros y porque se les llama así?
@@ -139,3 +141,5 @@
 - SVM P1: https://www.youtube.com/watch?v=efR1C6CvhmE&t=609s
 
 - DT: https://www.youtube.com/watch?v=-W0DnxQK1Eo
+
+-Ensembles: https://www.youtube.com/watch?v=Un9zObFjBH0

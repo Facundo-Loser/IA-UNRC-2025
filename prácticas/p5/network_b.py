@@ -175,4 +175,13 @@ Epoch 26: 9171 / 10000
 Epoch 27: 9212 / 10000
 Epoch 28: 9160 / 10000
 Epoch 29: 9169 / 10000
+
+
+
+No es tan buena porque (citado del tutorial/libro):
+Supposing the neural network functions in this way, we can give a plausible explanation for why it's better to have 10
+outputs from the network, rather than 4. If we had 4
+outputs, then the first output neuron would be trying to decide what the most significant bit of the digit was. And there's no easy way to relate that most significant
+bit to simple shapes like those shown above. It's hard to imagine that there's any good historical reason the component shapes of the digit will be closely related to (say)
+the most significant bit in the output.
 """
