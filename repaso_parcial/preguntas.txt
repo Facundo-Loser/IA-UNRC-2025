@@ -127,6 +127,13 @@
 - Que pasa si modifico esto.
 - Saber porque usamos la derivada.
 
+- Para qué sirve la mutación?
+- Qué ocurre si la probabilidad de mutación es alta (o baja)?
+- Para qué sirve el crossover?
+- De qué manera se puede saber si un modelo es bueno?
+- Por qué se utiliza la derivada en sigmoide?
+- Dado un escenario decidir qué técnica utilizar para resolver el problema.
+
 ** - Random (No son preguntas)
 - siempre lo que busco son parametros de una función.
 - practicar ejercicios básicos que se pueden hacer a mano?
@@ -142,7 +149,7 @@
 - in other words, we want to find a set of weights and biases which make the cost as small as possible. We'll do that using an algorithm known as gradient descent.
 
 
-Relación entre hiper-parámetros y overfitting/undefitting en distintos modelos:
+** - Relación entre hiper-parámetros y overfitting/undefitting en distintos modelos:
 
 - Regresión:*Undefitting: se produce suponer que los datos tenian una forma funcional y en realidad tenian otra (sesgo). Tambien por utilizar 1 o pocos grados de libertad cuando los datos no tienen una forma lineal (según yo).
             *Overfitting: se produce por dejar muchos grados de libertad en reg polinomial (varianza). También por el error irreducible y por entrenar el modelo muchas épocas y no realizar early stopping (se produce overfitting en las últimas iteraciones). Si no se realiza regularización (ridge,lasso o elastic net) también puede afectar y caer en overfitting.
@@ -158,7 +165,7 @@ Relación entre hiper-parámetros y overfitting/undefitting en distintos modelos
                -en DT: usar profundidad alta y no realizar poda.
 
 - Red neuronal: *Underfitting: muy pocas capas. Poca cant de épocas. Learning rate muy chico.
-                *Overfitting: demasiadas capas. Entrenar muchas épocas. falta de regularización. Dataset pequeño (suar data aumentation)
+                *Overfitting: demasiadas capas. Entrenar muchas épocas. falta de regularización. Dataset pequeño (usar data aumentation)
 
 ** - Links videos:
 
