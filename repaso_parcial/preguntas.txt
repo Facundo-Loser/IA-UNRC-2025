@@ -6,6 +6,7 @@
 - Ventajas de AG.
 - Limitaciones de AG.
 - Como se evitan los máximos locales?
+- Que ocurre si tengo una prob de mutación alta?
 - Como afecta una prob baja/alta de mutación y crossover?
 - Que es MOGA?.
 - Que es el frente de Pareto?
@@ -57,7 +58,7 @@
 - Explicar la función de costo de entropía cruzada.
 
 05 - ML Supervisado Clasificación no Parametrizada
-- Que es unmodelo no parametrico?
+- Que es un modelo no parametrico?
 - Explicar k-Nearest Neighbors.
 - Como se mide la distancia en k-Nearest Neighbors?
 - Para que se normalizan los datos en k-Nearest Neighbors?
@@ -80,8 +81,8 @@
 - Comparar Bagging, Bosting y Stacking.
 
 07 - Redes Neuronales
-- Que es una red neuronal?
 - Que es un perceptron?
+- Que es una red neuronal?
 - Que es una sigmoid neuron?
 - Explicar la estructura de una red neuronal.
 - Explicar como es el proceso de entrenamiento/aprendizaje de una red neuronal.
@@ -90,6 +91,7 @@
 - Que optimizadores se pueden usar en ANN?
 
 08 - Redes neuronales convolucionales
+- Que es una convolución?
 - Que es una red neuronales convolucional? en que se diferencia de las clásicas ANN?
 - Como se resaltan los patrones?
 - Que es un kernel?
@@ -107,6 +109,7 @@
 - Que es aprendizaje no supervisado?
 - Que es aprendizaje por refuerzo?
 - Que es aprendizaje evolutivo?
+- Como se particiona el data-set para entrenar un modelo?
 - Cuando utilizar ML?
 - Explicar problemas y desventajas de ML.
 - En que se diferencian regresión lineal y clasificación?
@@ -139,6 +142,23 @@
 - in other words, we want to find a set of weights and biases which make the cost as small as possible. We'll do that using an algorithm known as gradient descent.
 
 
+Relación entre hiper-parámetros y overfitting/undefitting en distintos modelos:
+
+- Regresión:*Undefitting: se produce suponer que los datos tenian una forma funcional y en realidad tenian otra (sesgo). Tambien por utilizar 1 o pocos grados de libertad cuando los datos no tienen una forma lineal (según yo).
+            *Overfitting: se produce por dejar muchos grados de libertad en reg polinomial (varianza). También por el error irreducible y por entrenar el modelo muchas épocas y no realizar early stopping (se produce overfitting en las últimas iteraciones). Si no se realiza regularización (ridge,lasso o elastic net) también puede afectar y caer en overfitting.
+
+-Clasificación:*Underfitting:
+                -en k-nearest-Neighbors: usar un k=1 o muy chico.
+                -SVM: usar un C muy bajo softmargin (permitir muchos errores). No usar kernel trick cuando se lo requiera también.
+                -en DT: usar profundidad baja.
+
+               *Overfitting: sino se hace sanitización/regularización de lso datos.
+               -en k-nearest-Neighbors: usar un k muy grande.
+               -SVM: usar un C muy alto softmargin (permitir pocos errores)
+               -en DT: usar profundidad alta y no realizar poda.
+
+- Red neuronal: *Underfitting: muy pocas capas. Poca cant de épocas. Learning rate muy chico.
+                *Overfitting: demasiadas capas. Entrenar muchas épocas. falta de regularización. Dataset pequeño (suar data aumentation)
 
 ** - Links videos:
 
