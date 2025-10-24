@@ -1,0 +1,9 @@
+ejemplo seleccionado:
+
+6. Fish Market Dataset
+This dataset includes data on the common fish species in fish market sales. Attributes include weight, length, height and width of fish used to predict fish weight based on these physical characteristics.
+
+Dataset Source: Fish Market Dataset
+Labels: Continuous values representing the weight of the fish (in grams).
+Size: 159 samples each with 7 attributes.
+Data: Numerical data

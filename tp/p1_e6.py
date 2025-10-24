@@ -94,10 +94,10 @@ toolbox.register("evaluate", eval)
 # función de crossover usando 2 point. primero se excluye la ciudad de inicio
 # para evitar crear individuos inválidos. Primero de parten los 2 padres
 # (padre1 y padre2) en un punto. Luego para generar el hijo1 se toma el
-# primer pedazo del del padre1 y se rellena el resto con el primer pezado
-# del padre2 pero teniendo cuidado de que no se repitan ciudades para no
-# generar indivduos invalidos. Luego se genera el hijo2 usando las segundas
-# mitades de cada padre y haciendo lo mismo de antes
+# primer pedazo del del padre1 y se rellena el resto con el padre2 de forma
+# que no queden repetidos para evitar individuos inválidos. Luego para
+# generar el hijo2 se toma la primer parte de padre2 y se rellena  el
+# con el padre1 de igual forma sin dejar ciudades repetidas.
 def crossover(p1, p2):
     if random.random() < CROSOVER_PROB:
         # excluyo la ciudad de inicio (y de fin)
@@ -111,8 +111,7 @@ def crossover(p1, p2):
         offspring1 = [START_CITY] + p1_inner[:point]
         offspring2 = [START_CITY] + p2_inner[:point]
 
-        # ahora relleno el resto de cada hijo con la
-        # mitad del otro padre respectivamente:
+        # ahora relleno el resto de cada hijo con el otro padre respectivamente:
         for city in p2_inner:
             if city not in offspring1: # chequeo para evitar ciudades repetidas
                 offspring1.append(city)
@@ -124,7 +123,7 @@ def crossover(p1, p2):
         offspring2.append(START_CITY)
 
         return creator.Individual(offspring1), creator.Individual(offspring2)
-    return creator.Individual(p1[:]), creator.Individual(p2[:])
+    return creator.Individual(p1[:]), creator.Individual(p2[:]) # sino se clonan los padres
 
 # registro la función crossover
 toolbox.register("mate", crossover) # 2 point crosover
