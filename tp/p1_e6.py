@@ -92,7 +92,7 @@ def eval(individual):
 toolbox.register("evaluate", eval)
 
 # función de crossover usando 2 point. primero se excluye la ciudad de inicio
-# para evitar crear individuos inválidos. Primero de parten los 2 padres
+# para evitar crear individuos inválidos. Entonces se parten los 2 padres
 # (padre1 y padre2) en un punto. Luego para generar el hijo1 se toma el
 # primer pedazo del del padre1 y se rellena el resto con el padre2 de forma
 # que no queden repetidos para evitar individuos inválidos. Luego para
