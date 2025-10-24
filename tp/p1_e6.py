@@ -5,29 +5,31 @@ import itertools
 import matplotlib.pyplot as plt
 
 # hiperparametros
-POPULATION_SIZE = 6  # tamaño de la población. El limite es la cant de permutaciones de las ciudades sin contar de la que se parte
-GENERATIONS = 30     # cantidad de generaciones a evolucionar
+POPULATION_SIZE = 24  # tamaño de la población. El limite es la cant de permutaciones de las ciudades sin contar de la que se parte
+GENERATIONS = 40     # cantidad de generaciones a evolucionar
 CROSOVER_PROB = 0.8  # probabilidad de crossover
 MUTATION_PROB = 0.04 # probabildiad de mutación
-CANT_CITIES = 4      # cantidad de ciudades
+CANT_CITIES = 5      # cantidad de ciudades
 START_CITY = 0       # ciudad de la que se parte
 
 # matriz para guardar las distancias de una ciudad a otra
 CITIES_DIST = [
-#   0   1   2   3
-   [0,  10, 40, 1 ], # 0
-   [10, 0,  4,  12], # 1
-   [40, 4,  0,  6 ], # 2
-   [1,  12, 6,  0 ]  # 3
+#   0   1   2   3   4
+   [0,  10, 40, 1 , 10], # 0
+   [10, 0,  4,  12, 20], # 1
+   [40, 4,  0,  6 , 4 ], # 2
+   [1,  12, 6,  0 , 8 ], # 3
+   [10, 3,  8,  9 , 0 ]  # 4
 ]
 
 # matriz para guardar el tiempo asocidado de ir de una ciudad a otra por el tráfico
 CITIES_TIMES = [
-#    0  1   2  3
-    [0, 20, 4, 12], # 0
-    [20, 0, 10, 6], # 1
-    [4, 10, 0, 16], # 2
-    [12, 6, 16, 0]  # 3
+#    0  1   2  3   4
+    [0, 20, 4, 12, 8 ], # 0
+    [20, 0, 10, 6, 10], # 1
+    [4, 10, 0, 16, 20], # 2
+    [12, 6, 16, 0, 5 ], # 3
+    [3,  9, 14, 10, 0]  # 4
 ]
 
 # cada individuo/cromosoma es una lista que denota un posible recorrido.
@@ -195,8 +197,8 @@ def main():
     stats.register("min", lambda fits: tuple(min(f) for f in zip(*fits)))
     stats.register("max", lambda fits: tuple(max(f) for f in zip(*fits)))
 
-    # evol con NSGA-II
-    algorithms.eaMuPlusLambda(pop, toolbox, mu=50, lambda_=100, cxpb=0.7, mutpb=0.3, ngen=40, stats=stats, halloffame=hof, verbose=True)
+    # usar NSGA-II para evolucionar
+    algorithms.eaMuPlusLambda(pop, toolbox, mu=50, lambda_=100, cxpb=0.7, mutpb=0.3, ngen=GENERATIONS, stats=stats, halloffame=hof, verbose=True)
     print("\n--- Frente de Pareto ---")
     for ind in hof:
         print(ind, ind.fitness.values)

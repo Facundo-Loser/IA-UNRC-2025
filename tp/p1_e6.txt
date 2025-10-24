@@ -1,5 +1,23 @@
 en el ejemplo del algoritmo todas las posibles soluciones eran:
 
+# matriz para guardar las distancias de una ciudad a otra
+CITIES_DIST = [
+#   0   1   2   3
+   [0,  10, 40, 1 ], # 0
+   [10, 0,  4,  12], # 1
+   [40, 4,  0,  6 ], # 2
+   [1,  12, 6,  0 ]  # 3
+]
+
+# matriz para guardar el tiempo asocidado de ir de una ciudad a otra por el tráfico
+CITIES_TIMES = [
+#    0  1   2  3
+    [0, 20, 4, 12], # 0
+    [20, 0, 10, 6], # 1
+    [4, 10, 0, 16], # 2
+    [12, 6, 16, 0]  # 3
+]
+
 frente de pareto:
 [0,3,2,1,0] = (21,58)
 [0,1,2,3,0] = (21,58)
@@ -10,4 +28,36 @@ resto de puntos:
 [0,1,3,2,0] = (68,46)
 [0,2,3,1,0] = (68,46)
 
+GRAFICO: frente_pareto.png
+
 por eso en el gráfico se ven solo 3 puntos ya que se repiten algunos
+
+
+
+
+
+
+**Ahora probando con este ejemplo:**
+
+# matriz para guardar las distancias de una ciudad a otra
+CITIES_DIST = [
+#   0   1   2   3   4
+   [0,  10, 40, 1 , 10], # 0
+   [10, 0,  4,  12, 20], # 1
+   [40, 4,  0,  6 , 4 ], # 2
+   [1,  12, 6,  0 , 8 ], # 3
+   [10, 3,  8,  9 , 0 ]  # 4
+]
+
+# matriz para guardar el tiempo asocidado de ir de una ciudad a otra por el tráfico
+CITIES_TIMES = [
+#    0  1   2  3   4
+    [0, 20, 4, 12, 8 ], # 0
+    [20, 0, 10, 6, 10], # 1
+    [4, 10, 0, 16, 20], # 2
+    [12, 6, 16, 0, 5 ], # 3
+    [3,  9, 14, 10, 0]  # 4
+]
+
+GRÁFICO: frente_pareto2.png
+
