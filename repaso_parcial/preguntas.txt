@@ -181,3 +181,7 @@
 - DT: https://www.youtube.com/watch?v=-W0DnxQK1Eo
 
 -Ensembles: https://www.youtube.com/watch?v=Un9zObFjBH0
+
+
+
+-RNN: https://www.youtube.com/watch?v=y9PLF2GsD-c&t=141s

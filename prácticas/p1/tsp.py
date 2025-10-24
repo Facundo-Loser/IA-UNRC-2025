@@ -16,7 +16,7 @@ CANT_CITIES = 4
 START_CITY = 0 # ciudad de la que se parte
 
 # hay que hacer una amtriz apra guardar los costos de las aristas del grafo
-CITIES_MATRIX = [
+CITIES_DIST = [
 #   0   1   2   3
    [0,  10, 40, 1 ], # 0
    [10, 0,  4,  12], # 1
@@ -26,7 +26,7 @@ CITIES_MATRIX = [
 
 # obtener el costo de ir de la ciudad A a la B
 def get_cost(cityA, cityB):
-    return CITIES_MATRIX[cityA][cityB]
+    return CITIES_DIST[cityA][cityB]
 
 # fitness function
 def fitness(individual):
@@ -93,7 +93,7 @@ def crossover(p1, p2):
         return offspring1, offspring2
     return p1[:], p2[:]
 
-# intercambia dos ciudades de lugar menos la ciudad de inicio
+# intercambia dos ciudades de lugar menos la ciudad de inicio (y de fin)
 def mutate(individual):
     if random.random() < MUTATION_PROB:
             index1 = random.randint(1, len(individual)-2)

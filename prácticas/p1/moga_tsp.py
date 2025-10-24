@@ -13,7 +13,7 @@ CANT_CITIES = 4
 START_CITY = 0 # ciudad de la que se parte
 
 # hay que hacer una amtriz apra guardar los costos de las aristas del grafo
-CITIES_MATRIX = [
+CITIES_DIST = [
 #   0   1   2   3
    [0,  10, 40, 1 ], # 0
    [10, 0,  4,  12], # 1
@@ -31,7 +31,7 @@ CITIES_TIMES = [
 
 # obtener el costo de ir de la ciudad A a la B
 def get_cost(cityA, cityB):
-    return CITIES_MATRIX[cityA][cityB]
+    return CITIES_DIST[cityA][cityB]
 
 # obtener el tiempo de ir de A y B
 def get_time(cityA, cityB):
@@ -79,7 +79,7 @@ def selection(population):
     min_f1 = f1[0]
     max_f2 = f2[-1]
     min_f2 = f2[0]
-    
+
     for _ in range(CANT_CITIES-1):
         f1_values.append(float('inf'))
         f1_values.append(float('inf'))
@@ -91,7 +91,7 @@ def selection(population):
         f2_values[i] = abs(f2_values[i-1] - f2_values[i+1])/(max - min)
         f1_plus_f2.append(f1_values[i] + f2_values[i])
 
-    f1_plus_f2.append(float('inf'))    
+    f1_plus_f2.append(float('inf'))
 
 # al hacer crossover excluimos la ciudad de inicio para no crear individuos invalidos
 # basicamente tomamos la primer parte de un padre y rellenamos con el otro pero
