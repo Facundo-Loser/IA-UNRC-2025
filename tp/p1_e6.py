@@ -145,7 +145,7 @@ toolbox.register("mutate", mutate)   # mutation bit flip
 # utilizo NSGA2 como algoritmo para la selección
 toolbox.register("select", tools.selNSGA2)
 
-# función para graficar todas las posibles soluciones y el frente de pareto
+# función para graficar todas las posibles soluciones y el frente de pareto que encontro NSGA-II
 def graficar(hof):
     # genero todas las posibles soluciones (permutaciones)
     cities = list(range(CANT_CITIES))
@@ -184,7 +184,7 @@ def graficar(hof):
 
     plt.xlabel('Distancia total')
     plt.ylabel('Tiempo total')
-    plt.title('Todas las soluciones (azul) y Frente de Pareto (verde)')
+    plt.title('Todas las soluciones (azul) y Frente de Pareto - NSGA-II (verde)')
     plt.legend()
     plt.grid(True)
     plt.show()
