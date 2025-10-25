@@ -163,3 +163,49 @@ CITIES_TIMES = [
 [0, 6, 4, 1, 3, 5, 2, 0] (81.0, 33.0)
 
 -> y el gráfico frente_pareto4.png
+
+
+
+-- Volviendo al 3er ejemplo si probamos --
+
+# hiperparametros
+POPULATION_SIZE = 30  # tamaño de la población. El limite es la cant de permutaciones de las ciudades sin contar de la que se parte
+GENERATIONS = 100      # cantidad de generaciones a evolucionar
+CROSOVER_PROB = 0.8   # probabilidad de crossover
+MUTATION_PROB = 0.2  # probabildiad de mutación
+CANT_CITIES = 6       # cantidad de ciudades
+START_CITY = 0        # ciudad de la que se parte
+
+# matriz para guardar las distancias de una ciudad a otra
+CITIES_DIST = [
+#   0   1   2   3   4    5
+   [0,  10, 40, 1 , 10,  8],  # 0
+   [10, 0,  4,  12, 20,  1],  # 1
+   [40, 4,  0,  6 , 4 , 10],  # 2
+   [1,  12, 6,  0 , 8 ,  4],  # 3
+   [10, 3,  8,  9 , 0 ,  6],  # 4
+   [14, 12, 7,  2,  8,   0]   # 5
+]
+
+# matriz para guardar el tiempo asocidado de ir de una ciudad a otra por el tráfico
+CITIES_TIMES = [
+#    0  1   2  3   4     5
+    [0,  20, 4,  12, 8 , 9 ], # 0
+    [20, 0,  10, 6,  10, 10], # 1
+    [4,  10, 0,  16, 20, 12], # 2
+    [12, 6,  16, 0,  5,  6 ], # 3
+    [3,  9,  14, 10, 0,  8 ], # 4
+    [9,  10, 3,  1,  12, 0 ]  # 5
+]
+
+es decir aumentamos las generaciones y probabilidad de mutación
+
+--- Frente de Pareto ---
+[0, 4, 2, 1, 5, 3, 0] (26.0, 55.0)
+[0, 4, 1, 2, 5, 3, 0] (30.0, 52.0)
+[0, 4, 5, 2, 1, 3, 0] (40.0, 47.0)
+[0, 3, 5, 2, 1, 4, 0] (46.0, 44.0)
+[0, 5, 2, 1, 3, 4, 0] (49.0, 36.0)
+[0, 2, 1, 5, 3, 4, 0] (65.0, 33.0)
+
+-> el gráfico es: frente_pareto5.png
