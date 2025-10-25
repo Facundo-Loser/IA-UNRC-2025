@@ -4,6 +4,9 @@ import random
 import itertools
 import matplotlib.pyplot as plt
 
+# [ACLARACIÓN]: para la resolución del ejercicio modelamos las ciudades con
+# un grafo completo y no dirigido.
+
 # hiperparametros
 POPULATION_SIZE = 24  # tamaño de la población. El limite es la cant de permutaciones de las ciudades sin contar de la que se parte
 GENERATIONS = 40      # cantidad de generaciones a evolucionar
@@ -143,9 +146,9 @@ toolbox.register("mutate", mutate)   # mutation bit flip
 # utilizo NSGA2 como algoritmo para la selección
 toolbox.register("select", tools.selNSGA2)
 
-# función para graficar todos los posibles individuos y el frente de pareto
+# función para graficar todas las posibles soluciones y el frente de pareto
 def graficar(hof):
-    # genero todas los posibles indivduos (permutaciones)
+    # genero todas las posibles soluciones (permutaciones)
     cities = list(range(CANT_CITIES))
     cities.remove(START_CITY)
     permutaciones = list(itertools.permutations(cities))
@@ -156,7 +159,7 @@ def graficar(hof):
         ruta = [START_CITY] + perm + [START_CITY]
         todas_las_soluciones.append(creator.Individual(ruta))
 
-    # para cada individuo le calculo cada fitness
+    # para cada individuo le calculo cada fitness y
     # genero todos los puntos (evalCost(i-esimo_individuo),evalTime(i-esimo_individuo))
     todas_eval = [eval(ind) for ind in todas_las_soluciones]
 
@@ -189,19 +192,18 @@ def graficar(hof):
 
 def main():
     random.seed(42)
-    pop = toolbox.population() # población inicial
+    pop = toolbox.population()
     hof = tools.ParetoFront()
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", lambda fits: tuple(sum(f)/len(f) for f in zip(*fits)))
     stats.register("min", lambda fits: tuple(min(f) for f in zip(*fits)))
     stats.register("max", lambda fits: tuple(max(f) for f in zip(*fits)))
 
-    # usar NSGA-II para evolucionar
+    # evolucionar
     algorithms.eaMuPlusLambda(pop, toolbox, mu=50, lambda_=100, cxpb=0.7, mutpb=0.3, ngen=GENERATIONS, stats=stats, halloffame=hof, verbose=True)
     print("\n--- Frente de Pareto ---")
     for ind in hof:
         print(ind, ind.fitness.values)
 
-    # grafico:
     graficar(hof)
 main()
