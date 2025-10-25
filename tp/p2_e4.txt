@@ -7,3 +7,43 @@ Dataset Source: Fish Market Dataset
 Labels: Continuous values representing the weight of the fish (in grams).
 Size: 159 samples each with 7 attributes.
 Data: Numerical data
+
+
+
+interpretación de resultados:
+
+**** CROSS VALIDATION ****
+Regresión Lineal - CV (k=5):
+  RMSE: [153.74375946  60.03363968  82.66871189 136.07128934  78.03270935]
+  Media: 102.11
+  Desviación estándar: 36.19
+
+Árbol de Decisión - CV (k=5):
+  RMSE: [ 97.61002668 100.0673062   66.16497563 109.06828137 112.81251349]
+  Media: 97.14
+  Desviación estándar: 16.47
+
+Random Forest - CV (k=5):
+  RMSE: [ 73.34351148  56.23895198  49.16528777 119.39752881  73.7767596 ]
+  Media: 74.38
+  Desviación estándar: 24.47
+
+
+**** ANÁLISIS FINAL ****
+El mejor modelo es: Random Forest con RMSE = 79.12
+Esto significa que en promedio, las predicciones del modelo
+se desvían aproximadamente 79.12 gramos del peso real.
+
+Comparación de todos los modelos:
+  Regresión Lineal: RMSE = 117.43
+  Árbol de Decisión: RMSE = 98.71
+  Random Forest: RMSE = 79.12
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Random Forest es claramente el mejor, pero podría mejorar con más datos o ajuste de hiperparámetros.
+Los modelos son sensibles a la partición de datos (debido a los pocos datos)
+El error de ~79 gramos es aceptable para peces que pesan desde 5g hasta 1650g
+
+Dado que tengo pocos datos (159 muestras), los resultados del cross-validation son razonables.
+Random Forest es una buena elección, pero con nuevos datos el error podría
+variar bastante.

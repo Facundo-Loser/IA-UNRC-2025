@@ -64,16 +64,6 @@ plt.suptitle("Distribución de características - Dataset Fish")
 plt.tight_layout()
 plt.show()
 
-# distribución por especies (BORRAR?????????????? histograma)
-plt.figure(figsize=(12, 6))
-fish_boxplot = fish.copy()
-fish_boxplot['Species'] = fish_boxplot['Species'].astype('category')
-sns.boxplot(x='Species', y='Weight', data=fish_boxplot)
-plt.title("Distribución de peso por especie")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-
 # búsqueda de correlaciones
 print("\n**** CORRELACIONES ****")
 
@@ -105,7 +95,7 @@ print(fish.isnull().sum()) # no hay datos null
 
 # separo los datos para entrenamiento y validación (80%-20%):
 # uso estratificación dividiendo en estratos por la
-# característica 'Species'para evitar el sesgo por muestreo
+# característica 'Species' para evitar el sesgo por muestreo
 # dado que no hay tantos datos (hay 159 en total)
 strat_train_set, strat_test_set = train_test_split(
     fish, test_size=0.2, stratify=fish["Species"], random_state=42
@@ -142,7 +132,7 @@ cat_attribs = ["Species"]
 
 # pipeline para las características numéricas:
 # 'SimpleImputer' permite rellenar datos faltates con la media de la columna y
-# aunque en este caso no faltan datos se deja como una medida de seguridad
+# aunque en este caso no faltan datos se deja como una medida de seguridad por
 # si en el futuro se añaden mas datos o por cualquier otro motivo.
 # Luego 'StandardScaler' sirve para normalizar los datos usando estandarización.
 num_pipeline = Pipeline([
@@ -216,19 +206,38 @@ mae_forest = mean_absolute_error(y_test, y_pred_forest)
 print(f"   RMSE random forest: {rmse_forest:.2f}")
 print(f"   MAE random forest: {mae_forest:.2f}")
 
-# 6. validación cruzada
+# cross-validation:
 # dado que tenemos pocos datos (159) usar cross-validation es útil.
 # usamos 5 folds (cv=5)
 print("\n**** CROSS VALIDATION ****")
+
+# cross-validation para regresión lineal
+lin_scores = cross_val_score(lin_reg, X_train, y_train, scoring='neg_mean_squared_error', cv=5)
+lin_rmse_scores = np.sqrt(-lin_scores)
+
+print(f"Regresión Lineal - CV (k=5):")
+print(f"  RMSE: {lin_rmse_scores}")
+print(f"  Media: {lin_rmse_scores.mean():.2f}")
+print(f"  Desviación estándar: {lin_rmse_scores.std():.2f}")
+
+# cross-validation para árbol de decisión
+tree_scores = cross_val_score(tree_reg, X_train, y_train, scoring='neg_mean_squared_error', cv=5)
+tree_rmse_scores = np.sqrt(-tree_scores)
+
+print(f"\nÁrbol de Decisión - CV (k=5):")
+print(f"  RMSE: {tree_rmse_scores}")
+print(f"  Media: {tree_rmse_scores.mean():.2f}")
+print(f"  Desviación estándar: {tree_rmse_scores.std():.2f}")
+
+# cross-validation para random forest
 forest_scores = cross_val_score(forest_reg, X_train, y_train, scoring='neg_mean_squared_error', cv=5)
 forest_rmse_scores = np.sqrt(-forest_scores)
 
-print(f"resultados de k-fold cross-validation (k=5) con random forest:")
+print(f"\nRandom Forest - CV (k=5):")
 print(f"  RMSE: {forest_rmse_scores}")
 print(f"  Media: {forest_rmse_scores.mean():.2f}")
-print(f"  desviación estándar: {forest_rmse_scores.std():.2f}")
+print(f"  Desviación estándar: {forest_rmse_scores.std():.2f}")
 
-#*************************BORRAR????????????????************************
 # comparación de los modelos
 print("\n**** COMPARACIÓN DE MODELOS ****")
 model_comparison = pd.DataFrame({
@@ -238,16 +247,13 @@ model_comparison = pd.DataFrame({
 })
 print(model_comparison)
 
-# visualización de resultados
-plt.figure(figsize=(15, 5))
-
-# gráfico de comparación de modelos
-plt.subplot(1, 3, 3)
+# gráfico de comparación de modelos para el RMSE
+plt.figure(figsize=(8, 6))
 plt.bar(model_comparison['Modelo'], model_comparison['RMSE'], color=['blue', 'orange', 'green'])
 plt.xticks(rotation=45)
 plt.ylabel('RMSE')
 plt.title('Comparación de RMSE entre Modelos')
-
+plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
 plt.show()
 

@@ -198,7 +198,7 @@ def main():
     stats.register("min", lambda fits: tuple(min(f) for f in zip(*fits)))
     stats.register("max", lambda fits: tuple(max(f) for f in zip(*fits)))
 
-    # evolucionar
+    # evolucionar con NSGA-II
     algorithms.eaMuPlusLambda(pop, toolbox, mu=30, lambda_=30, cxpb=CROSOVER_PROB, mutpb=MUTATION_PROB, ngen=GENERATIONS, stats=stats, halloffame=hof, verbose=True)
     print("\n--- Frente de Pareto ---")
     for ind in hof:
