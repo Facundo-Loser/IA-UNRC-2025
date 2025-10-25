@@ -1,0 +1,28 @@
+*Código para crear botón que permite ejecutar código: *
+
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
+# Crear el botón
+button = widgets.Button(
+    description="Ejecutar ejercicio",
+    button_style='success',
+    layout=widgets.Layout(width='auto')
+)
+
+# Definir la acción del botón
+def on_button_click(b):
+    with output:
+        clear_output(wait=True)
+        print("Ejecutando ejercicio...\n")
+        main()  # acá se ejecuta tu función principal
+
+# Crear un área de salida para mostrar lo que imprime main()
+output = widgets.Output()
+
+# Asocia el evento
+button.on_click(on_button_click)
+
+# Mostrar botón + salida
+display(button, output)
+

@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 
 # hiperparametros
 POPULATION_SIZE = 24  # tamaño de la población. El limite es la cant de permutaciones de las ciudades sin contar de la que se parte
-GENERATIONS = 40     # cantidad de generaciones a evolucionar
-CROSOVER_PROB = 0.8  # probabilidad de crossover
-MUTATION_PROB = 0.04 # probabildiad de mutación
-CANT_CITIES = 5      # cantidad de ciudades
-START_CITY = 0       # ciudad de la que se parte
+GENERATIONS = 40      # cantidad de generaciones a evolucionar
+CROSOVER_PROB = 0.8   # probabilidad de crossover
+MUTATION_PROB = 0.04  # probabildiad de mutación
+CANT_CITIES = 5       # cantidad de ciudades
+START_CITY = 0        # ciudad de la que se parte
 
 # matriz para guardar las distancias de una ciudad a otra
 CITIES_DIST = [
@@ -91,7 +91,7 @@ def eval(individual):
 
 toolbox.register("evaluate", eval)
 
-# función de crossover usando 2 point. primero se excluye la ciudad de inicio
+# función de crossover usando 1 point. primero se excluye la ciudad de inicio
 # para evitar crear individuos inválidos. Entonces se parten los 2 padres
 # (padre1 y padre2) en un punto. Luego para generar el hijo1 se toma el
 # primer pedazo del del padre1 y se rellena el resto con el padre2 de forma
@@ -140,7 +140,7 @@ def mutate(individual):
 # registro la función mutación
 toolbox.register("mutate", mutate)   # mutation bit flip
 
-# utilizo NSGA2 como algoritmo para seleccionar los indivduos
+# utilizo NSGA2 como algoritmo para la selección
 toolbox.register("select", tools.selNSGA2)
 
 # función para graficar todos los posibles individuos y el frente de pareto
