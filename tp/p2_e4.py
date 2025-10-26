@@ -45,13 +45,15 @@ print("\n**** estadísticas descriptivas: ****")
 print(fish.describe())
 
 # características/features de los peces:
-# Species (Especie)                -> var categórica (no es numérica)
+# Species (Especie)                -> única var categórica
 # Weight  (Peso en gramos)         -> variable objetivo
-# Length1 (Longitud vertical cm)
-# Length2 (Longitud diagonal cm)
-# Length3 (Longitud transversal)
+# Length1
+# Length2
+# Length3
 # Height  (Altura del pez)
-# Width   (Ancho del pez cm)
+# Width   (Ancho del pez)
+
+# Length1, Length2 y Length3 son diferentes medidas del pez pero no se especifica cuales exactamente
 
 # variable objetivo a predecir: Weight (peso del pez en gramos)
 
@@ -60,7 +62,7 @@ print("\n**** ANÁLISIS EXPLORATORIO ****")
 
 # histogramas
 fish.hist(bins=30, figsize=(15, 10))
-plt.suptitle("Distribución de características - Dataset Fish")
+plt.suptitle("Distribución de características")
 plt.tight_layout()
 plt.show()
 
@@ -69,7 +71,7 @@ print("\n**** CORRELACIONES ****")
 
 # matriz de correlación
 corr_matrix = fish.corr(numeric_only=True)
-print("Matriz de correlación:")
+print("Correlaciones respecto a Weight:")
 print(corr_matrix["Weight"].sort_values(ascending=False))
 
 # heatmap de correlaciones
@@ -257,7 +259,7 @@ plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
 plt.show()
 
-# BORRAR???????????
+# BORRAR???????????************************************************
 # finamente algunas predicciones de ejemplo
 print("\n**** PREDICCIONES DE EJEMPLO ****")
 sample_predictions = pd.DataFrame({
