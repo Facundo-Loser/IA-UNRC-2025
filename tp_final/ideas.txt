@@ -1,0 +1,10 @@
+Clasificador de sentimientos con transformers
+Usa un modelo preentrenado como distilbert-base-uncased-finetuned-sst-2-english.
+Crea una app que clasifique texto como positivo/negativo y muestre la probabilidad.
+Bonus: ajusta un poco el modelo (fine-tuning) con tus propios ejemplos.
+
+Chat con tus apuntes / PDFs
+Crea embeddings de los apuntes de clase y usa un modelo tipo GPT o BERT para responder preguntas sobre ellos.
+Básicamente un mini RAG (Retrieval Augmented Generation).
+Puedes hacerlo con FAISS o ChromaDB para el índice vectorial.
+

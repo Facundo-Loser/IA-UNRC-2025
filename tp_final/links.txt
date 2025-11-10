@@ -1,0 +1,25 @@
+INTRO al Natural Language Processing (NLP) #1 - ¡De PALABRAS a VECTORES!
+https://www.youtube.com/watch?v=Tg1MjMIVArc
+
+INTRO al Natural Language Processing (NLP) #2 - ¿Qué es un EMBEDDING?
+https://www.youtube.com/watch?v=RkYuH_K7Fx4
+
+¿Qué es un TRANSFORMER? La Red Neuronal que lo cambió TODO!
+https://www.youtube.com/watch?v=aL-EmKuB078
+
+¿Por qué estas REDES NEURONALES son tan POTENTES? 🤔 | TRANSFORMERS Parte 2
+https://www.youtube.com/watch?v=xi94v_jl26U
+
+¿Qué es un LLM? Enormes Modelos del Lenguaje | Large Language Models
+https://www.youtube.com/watch?v=Sz4qacFBHLk
+
+Transformer Architecture: The Positional Encoding
+https://kazemnejad.com/blog/transformer_architecture_positional_encoding
+
+Create a Large Language Model from Scratch with Python – Tutorial
+https://www.youtube.com/watch?v=UU1WVnMk4E8
+
+cuando usamos una red y obtenemos un embeding suamos entrenamiento no supervisado
+
+Diferencia entre aprendizaje supervisado y NO supervisado | Machine Learning 101
+https://www.youtube.com/watch?v=d1tVOcZwM3s
