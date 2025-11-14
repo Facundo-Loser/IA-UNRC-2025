@@ -8,3 +8,7 @@ Crea embeddings de los apuntes de clase y usa un modelo tipo GPT o BERT para res
 Básicamente un mini RAG (Retrieval Augmented Generation).
 Puedes hacerlo con FAISS o ChromaDB para el índice vectorial.
 
+
+DistilBERT steam reviews:
+https://chatgpt.com/s/t_6915e37270b88191b17d829e41070495
+

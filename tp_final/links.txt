@@ -23,3 +23,10 @@ cuando usamos una red y obtenemos un embeding suamos entrenamiento no supervisad
 
 Diferencia entre aprendizaje supervisado y NO supervisado | Machine Learning 101
 https://www.youtube.com/watch?v=d1tVOcZwM3s
+
+
+****
+
+Pero, ¿qué es un GPT? Introducción visual a los Transformers | Capítulo 5, Aprendizaje profundo
+https://www.youtube.com/watch?v=wjZofJX0v4M
+
